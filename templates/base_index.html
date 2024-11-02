@@ -1,0 +1,10 @@
+{% extends "base_layout.html" %}
+
+{% block layout %}
+    <div class="h-dvh grid grid-rows-layout">
+        {% include "header.html" %}
+        {% block content %}
+        {% endblock content %}
+        {% include "footer.html" %}
+    </div>
+{% endblock layout %}
