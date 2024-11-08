@@ -21,7 +21,7 @@ class ProductListView(ListView):
     context_object_name = 'products'
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().prefetch_related('categories')
         category_id = self.request.GET.get('category')
         if category_id:
             category = get_object_or_404(Category, id=category_id)
@@ -30,7 +30,7 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+        context['categories'] = Category.objects.only('id', 'name', 'image')
         context['selected_category'] = self.request.GET.get('category')
         return context
 
