@@ -1,0 +1,98 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": [
+          "Hola",
+          "Buenos días",
+          "Buenas tardes",
+          "Buenas noches"
+        ],
+        "responses": [
+          "¡Hola! ¿Cómo puedo ayudarte hoy?",
+          "¡Hola! Bienvenido a nuestra tienda."
+        ]
+      },
+      {
+        "tag": "product_inquiry",
+        "patterns": [
+          "¿Tienen zapatos en oferta?",
+          "¿Cuáles son los últimos productos?",
+          "Quiero saber sobre los productos nuevos",
+          "¿Tienen alguna promoción?"
+        ],
+        "responses": [
+          "Sí, tenemos zapatos en oferta. Puedes ver nuestra sección de promociones.",
+          "Los últimos productos están disponibles en nuestra tienda en línea. ¿Te gustaría ver alguno en particular?"
+        ]
+      },
+      {
+        "tag": "order_status",
+        "patterns": [
+          "¿Dónde está mi pedido?",
+          "Quiero saber el estado de mi pedido",
+          "¿Cuándo llegará mi compra?"
+        ],
+        "responses": [
+          "Para verificar el estado de tu pedido, por favor proporciona el número de seguimiento.",
+          "Tu pedido está en camino y debería llegar pronto. Puedes rastrearlo con el número de seguimiento."
+        ]
+      },
+      {
+        "tag": "store_hours",
+        "patterns": [
+          "¿Cuáles son los horarios de la tienda?",
+          "¿A qué hora abren?",
+          "¿Cuánto tiempo están abiertos hoy?"
+        ],
+        "responses": [
+          "Nuestra tienda está abierta de lunes a viernes de 9:00 a.m. a 8:00 p.m. y los fines de semana de 10:00 a.m. a 6:00 p.m.",
+          "Estamos abiertos todos los días. ¡Ven a visitarnos!"
+        ]
+      },
+      {
+        "tag": "return_policy",
+        "patterns": [
+          "¿Cuál es la política de devoluciones?",
+          "Quiero devolver un producto",
+          "¿Cómo puedo devolver un artículo?"
+        ],
+        "responses": [
+          "Puedes devolver un producto dentro de los 30 días posteriores a la compra. Asegúrate de tener el recibo.",
+          "Para devolver un artículo, visita nuestra sección de devoluciones en el sitio web o dirígete a la tienda."
+        ]
+      },
+      {
+        "tag": "thanks",
+        "patterns": [
+          "Gracias",
+          "Muchas gracias",
+          "Te lo agradezco"
+        ],
+        "responses": [
+          "¡De nada! Estoy aquí para ayudarte.",
+          "¡No hay de qué! Si necesitas algo más, no dudes en preguntar."
+        ]
+      },
+      {
+        "tag": "goodbye",
+        "patterns": [
+          "Adiós",
+          "Hasta luego",
+          "Nos vemos"
+        ],
+        "responses": [
+          "¡Hasta luego! Que tengas un buen día.",
+          "¡Adiós! Espero verte pronto."
+        ]
+      },
+      {
+        "tag": "noanswer",
+        "patterns": [],
+        "responses": [
+          "Lo siento, no entiendo lo que dices.",
+          "Podrías reformular tu pregunta, por favor?"
+        ]
+      }
+    ]
+  }
