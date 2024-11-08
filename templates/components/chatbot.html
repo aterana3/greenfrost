@@ -53,7 +53,13 @@
         const chatBox = document.getElementById("chat-box");
         const messageElement = document.createElement("div");
         messageElement.classList.add("my-1", "p-2", "rounded", sender === 'user' ? "bg-blue-100" : "bg-green-100", "text-sm");
-        messageElement.textContent = sender === 'user' ? "Tú: " + message : "Bot: " + message;
+
+        if (message.includes('href')) {
+            messageElement.innerHTML = sender === 'user' ? "Tú: " + message : "Bot: " + message;
+        } else {
+            messageElement.textContent = sender === 'user' ? "Tú: " + message : "Bot: " + message;
+        }
+
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
     }

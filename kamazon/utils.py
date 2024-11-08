@@ -1,18 +1,32 @@
+import re
 from apps.products.models import Product
 import json
+from django.db.models import Q
+
+import re
+from django.db.models import Q
 
 def filter_products_keywords(consult):
-    keywords = consult.split()
-    products = Product.objects.filter(keywords__icontains=keywords[0])
+    cleaned_consult = re.sub(r'[^\w\s]', '', consult.lower())
+    keywords = cleaned_consult.split()
+
+    query = Q(name__icontains=keywords[0]) | Q(keywords__icontains=keywords[0]) | Q(categories__name__icontains=keywords[0])
+
+    for keyword in keywords[1:]:
+        query |= Q(name__icontains=keyword) | Q(keywords__icontains=keyword) | Q(categories__name__icontains=keyword)
+
+    products = Product.objects.filter(query)
+
     return products[:5]
+
 
 
 def generate_json_response(products):
     return json.dumps([{
         "name": product.name,
-        "price": product.price,
+        "price": float(product.price),
         "description": product.description,
         "stock": product.stock,
         "href": '/products/' + str(product.id),
-        "categories": [cat.name for cat in products.categories.all()]
+        "categories": [cat.name for cat in product.categories.all()],
     } for product in products])
