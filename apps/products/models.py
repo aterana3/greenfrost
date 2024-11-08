@@ -32,7 +32,8 @@ class Product(ModelBase):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     stock = models.PositiveIntegerField(verbose_name='Stock', default=0)
     categories = models.ManyToManyField('Category', related_name='products')
-    views = models.PositiveIntegerField(verbose_name='Stars', default=0)
+    views = models.PositiveIntegerField(verbose_name='Views', default=0)
+    keywords = models.CharField(verbose_name='Keywords', max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
