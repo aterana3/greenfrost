@@ -17,6 +17,9 @@
             <div class="mb-4">
                 {{ form.description }}
             </div>
+            <div class="mb-4">
+                {% include 'components/forms/field.html' with field=form.keywords %}
+            </div>
         </div>
         <div class="w-full md:w-1/4 bg-white shadow-md p-4">
             <div class="mb-4">

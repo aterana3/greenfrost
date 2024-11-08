@@ -10,4 +10,5 @@ urlpatterns = [
     path('api/<int:pk>/', products.ProductDetailAPIView.as_view(), name='product_detail_api'),
     path('api/list/recommended', products.ProductRecommendAPIView.as_view(), name='product_recommend_api'),
     path('api/list/categories/', category.CategoryListAPIView.as_view(), name='categories_list_api'),
+    path('api/list/recent-added/', products.RecentAddedProductListAPIView.as_view(), name='recent_added_list_api'),
 ]

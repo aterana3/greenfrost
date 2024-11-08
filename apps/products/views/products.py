@@ -76,3 +76,18 @@ class ProductRecommendAPIView(View):
                 'image': product.get_image(),
             })
         return JsonResponse(data, safe=False)
+
+
+class RecentAddedProductListAPIView(View):
+    def get(self, request, *args, **kwargs):
+        products = Product.objects.all().order_by('-created_at')[:3]
+        data = []
+        for product in products:
+            data.append({
+                'name': product.name,
+                'price': product.price,
+                'stock': product.stock,
+                'description': product.description,
+                'image': product.get_image(),
+            })
+        return JsonResponse(data, safe=False)
