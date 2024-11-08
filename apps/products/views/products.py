@@ -35,13 +35,44 @@ class ProductListView(ListView):
         return context
 
 
-class ProductDetailFetchView(View):
+class ProductDetailAPIView(View):
     def get(self, request, *args, **kwargs):
         product = Product.objects.get(pk=kwargs['pk'])
         data = {
             'name': product.name,
             'price': product.price,
             'stock': product.stock,
+            'description': product.description,
             'image': product.get_image(),
         }
         return JsonResponse(data)
+
+
+class ProductListAPIView(View):
+    def get(self, request, *args, **kwargs):
+        products = Product.objects.all()
+        data = []
+        for product in products:
+            data.append({
+                'name': product.name,
+                'price': product.price,
+                'stock': product.stock,
+                'description': product.description,
+                'image': product.get_image(),
+            })
+        return JsonResponse(data, safe=False)
+
+
+class ProductRecommendAPIView(View):
+    def get(self, request, *args, **kwargs):
+        products = Product.objects.all().order_by('-views')[:3]
+        data = []
+        for product in products:
+            data.append({
+                'name': product.name,
+                'price': product.price,
+                'stock': product.stock,
+                'description': product.description,
+                'image': product.get_image(),
+            })
+        return JsonResponse(data, safe=False)

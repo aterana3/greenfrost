@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-        exclude = ['user', 'created_at', 'updated_at']
+        exclude = ['user', 'created_at', 'updated_at', 'views']
         widgets = {
             "description": CKEditor5Widget(
                 attrs={"class": "django_ckeditor_5"}, config_name="extends"

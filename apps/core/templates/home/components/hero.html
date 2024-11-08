@@ -1,39 +1,37 @@
 {% load static %}
-<div class="bg-primary text-white">
-    <div class="container py-36 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-        <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-            <h1 class="my-4 text-3xl md:text-5xl font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
 
-                GREENFROST
-            </h1>
-            <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-                Lo mejor para tu agricultura.
-            </p>
+<section class="bg-primary container text-white py-36 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+        <h1 class="my-4 text-3xl md:text-5xl font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
+            GREENFROST
+        </h1>
+        <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
+            Lo mejor para tu agricultura.
+        </p>
 
-            <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in">
-                <a
+        <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in">
+            <a
                     href="{% url 'products:products_list' %}"
                     class="bg-white text-primary font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
-                    Explorar
-                </a>
-            </div>
+                Explorar
+            </a>
         </div>
-        <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
-            <div class="grid grid-rows-2 grid-cols-3 gap-2">
-                <div class="col-span-2 row-span-2">
+    </div>
+    <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
+        <div class="grid grid-rows-2 grid-cols-3 gap-2">
+            <div class="col-span-2 row-span-2">
 
-                    <img src="{% static 'img\hero\imagen 1.png' %}" alt="Imagen grande"
-                        class="w-full h-full object-cover">
-                </div>
-                <div class="col-span-1">
-                    <img src="{% static 'img\hero\imagen 2.png' %}" alt="Imagen pequeña 1"
-                        class="w-full h-full object-cover mb-4">
-                </div>
-                <div class="col-span-1">
-                    <img src="{% static 'img\hero\imagen 3.png' %}" alt="Imagen pequeña 2"
-                        class="w-full h-full object-cover mb-4">
-                </div>
+                <img src="{% static 'img\hero\imagen 1.png' %}" alt="Imagen grande"
+                     class="w-full h-full object-cover">
+            </div>
+            <div class="col-span-1">
+                <img src="{% static 'img\hero\imagen 2.png' %}" alt="Imagen pequeña 1"
+                     class="w-full h-full object-cover mb-4">
+            </div>
+            <div class="col-span-1">
+                <img src="{% static 'img\hero\imagen 3.png' %}" alt="Imagen pequeña 2"
+                     class="w-full h-full object-cover mb-4">
             </div>
         </div>
     </div>
-</div>
+</section>

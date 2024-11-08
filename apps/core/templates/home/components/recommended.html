@@ -1,75 +1,44 @@
 {% load static %}
-<div class="container py-24 mx-auto">
-    <h2 class="text-3xl font-bold mb-8 slide-in-bottom-h1 text-primary">Recomendados para ti</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-
-            <img src="{% static 'img/recommended/imagen 1.png' %}" alt="Imagen 1" class="w-full h-64 object-cover">
-            <div class="p-4">
-                <div class="flex justify-between">
-                    <h3 class="text-primary font-bold mb-2">Producto 1</h3>
-                    <p class="text-primary font-bold mb-2">Precio: $25.60</p>
-                </div>
-                <div class="flex justify-end p-2">
-                    <button class="bg-primary text-white px-4 py-2 rounded-lg">Comprar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg">
-
-            <img src="{% static 'img/recommended/imagen 2.png' %}" alt="Imagen 2" class="w-full h-64 object-cover">
-            <div class="p-4">
-                <div class="flex justify-between">
-                    <h3 class="text-primary font-bold mb-2">Producto 2</h3>
-                    <p class="text-primary font-bold mb-2">Precio: $55.00</p>
-                </div>
-                <div class="flex justify-end p-2">
-                    <button class="bg-primary text-white px-4 py-2 rounded-lg">Comprar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg">
-
-            <img src="{% static 'img/recommended/imagen 3.png' %}" alt="Imagen 3" class="w-full h-64 object-cover">
-            <div class="p-4">
-                <div class="flex justify-between">
-                    <h3 class="text-primary font-bold mb-2">Producto 3</h3>
-                    <p class="text-primary font-bold mb-2">Precio: $26.77</p>
-                </div>
-                <div class="flex justify-end p-2">
-                    <button class="bg-primary text-white px-4 py-2 rounded-lg">Comprar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg">
-
-            <img src="{% static 'img/recommended/imagen 4.png' %}" alt="Imagen 4" class="w-full h-64 object-cover">
-            <div class="p-4">
-                <div class="flex justify-between">
-                    <h3 class="text-primary font-bold mb-2">Producto 4</h3>
-                    <p class="text-primary font-bold mb-2">Precio: $340.00</p>
-                </div>
-                <div class="flex justify-end p-2">
-                    <button class="bg-primary text-white px-4 py-2 rounded-lg">Comprar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg">
-
-            <img src="{% static 'img/recommended/imagen 5.png' %}" alt="Imagen 5" class="w-full h-64 object-cover">
-            <div class="p-4">
-                <div class="flex justify-between">
-                    <h3 class="text-primary font-bold mb-2">Producto 5</h3>
-                    <p class="text-primary font-bold mb-2">Precio: $35.00</p>
-                </div>
-                <div class="flex justify-end p-2">
-                    <button class="bg-primary text-white px-4 py-2 rounded-lg">Comprar</button>
-                </div>
-            </div>
-        </div>
+<section class="bg-base container text-black py-20 px-4 mx-auto">
+    <header class="text-center mb-10">
+        <h2 class="text-4xl font-semibold mb-6 slide-in-bottom-h1 text-primary">Recomendados para ti</h2>
+    </header>
+    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
     </div>
-</div>
+
+    <template id="product-template">
+        <article class="bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl max-w-xs mx-auto">
+            <img src="" alt="" class="object-cover object-center w-full h-56 rounded-t-lg">
+            <div class="p-5">
+                <h3 class="text-2xl font-semibold text-gray-800"></h3>
+                <div class="flex items-center justify-between mt-5">
+                    <span class="text-lg font-semibold text-primary"></span>
+                    <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors duration-300">Ver detalle</button>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('products/api/list/recommended')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('product-container');
+                    const template = document.getElementById('product-template');
+
+                    data.forEach(product => {
+                        const productClone = template.content.cloneNode(true);
+
+                        productClone.querySelector('img').src = product.image;
+                        productClone.querySelector('img').alt = product.name;
+                        productClone.querySelector('h3').textContent = product.name;
+                        productClone.querySelector('span').textContent = `$${product.price}`;
+
+                        container.appendChild(productClone);
+                    });
+                })
+                .catch(error => console.error('Error al cargar los productos:', error));
+        });
+    </script>
+</section>

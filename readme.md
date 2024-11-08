@@ -28,11 +28,7 @@ pip install -r dependencias.txt
 python manage.py makemigrations / python manage.py makemigrations <app_name>
 python manage.py migrate
 ```
-4. Crear tabla cache
-```bash
-python manage.py createcachetable
-```
-5. Crear superusuario
+4. Crear superusuario
 ```bash
 python manage.py createsuperuser
 ```
