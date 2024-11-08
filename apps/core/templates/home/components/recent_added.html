@@ -13,7 +13,7 @@
                 <h3 class="text-2xl font-semibold text-gray-800"></h3>
                 <div class="flex items-center justify-between mt-5">
                     <span class="text-lg font-semibold text-primary"></span>
-                    <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors duration-300">Ver detalle</button>
+                    <a href="#" class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors duration-300">Ver detalle</a>
                 </div>
             </div>
         </article>
@@ -34,6 +34,7 @@
                         productClone.querySelector('img').alt = product.name;
                         productClone.querySelector('h3').textContent = product.name;
                         productClone.querySelector('span').textContent = `$${product.price}`;
+                        productClone.querySelector('a').href = `/products/${product.id}/`;
 
                         container.appendChild(productClone);
                     });

@@ -45,6 +45,7 @@ class ProductDetailAPIView(View):
     def get(self, request, *args, **kwargs):
         product = Product.objects.get(pk=kwargs['pk'])
         data = {
+            'id': product.id,
             'name': product.name,
             'price': product.price,
             'stock': product.stock,
@@ -60,6 +61,7 @@ class ProductListAPIView(View):
         data = []
         for product in products:
             data.append({
+                'id': product.id,
                 'name': product.name,
                 'price': product.price,
                 'stock': product.stock,
@@ -75,6 +77,7 @@ class ProductRecommendAPIView(View):
         data = []
         for product in products:
             data.append({
+                'id': product.id,
                 'name': product.name,
                 'price': product.price,
                 'stock': product.stock,
@@ -90,6 +93,7 @@ class RecentAddedProductListAPIView(View):
         data = []
         for product in products:
             data.append({
+                'id': product.id,
                 'name': product.name,
                 'price': product.price,
                 'stock': product.stock,
