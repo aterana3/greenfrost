@@ -40,11 +40,55 @@
                 <span class="text-2xl font-bold text-gray-800">${{ total }}</span>
             </div>
             <div class="text-right mt-4">
-                <a href="#" class="bg-primary text-white px-5 py-3 rounded-lg font-medium hover:bg-primary-light transition-colors">Proceder al pago</a>
+                <button id="checkout-button" class="bg-primary text-white px-5 py-3 rounded-lg font-medium hover:bg-primary-light transition-colors">Proceder al pago</button>
             </div>
         </div>
     {% else %}
         <p class="text-gray-500 text-center py-10">Tu carrito está vacío.</p>
     {% endif %}
 </main>
+
+<script>
+    document.getElementById('checkout-button').addEventListener('click', async () => {
+        const user_id = {{ request.user.id }};
+        const subtotal = {{ subtotal }};
+        const tax = {{ tax }};
+        const total = {{ total }};
+        const products = {};
+
+        {% for item in cart_items %}
+        products["{{ item.product.id }}"] = {
+            price: {{ item.product.price }},
+            amount: {{ item.quantity }}
+        };
+        {% endfor %}
+
+        try {
+            const response = await fetch("{% url 'invoice:invoice_create' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({
+                    user_id,
+                    subtotal,
+                    tax,
+                    total,
+                    products: JSON.stringify(products)
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.status === "success") {
+                window.location.reload();
+            } else {
+                alert("Error al finalizar la compra: " + result.message);
+            }
+        } catch (error) {
+            alert("Ocurrió un error inesperado: " + error.message);
+        }
+    });
+</script>
 {% endblock %}
