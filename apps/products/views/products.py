@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.views.generic import DetailView, ListView
 from apps.products.models import Product, Category
 from django.http import JsonResponse
@@ -23,9 +24,14 @@ class ProductListView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset().prefetch_related('categories')
         category_id = self.request.GET.get('category')
+        search_query = self.request.GET.get('search')
+
         if category_id:
             category = get_object_or_404(Category, id=category_id)
             queryset = queryset.filter(categories=category)
+
+        if search_query:
+            queryset = queryset.filter(Q(name__icontains=search_query))
         return queryset
 
     def get_context_data(self, **kwargs):
