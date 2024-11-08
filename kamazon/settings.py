@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.shopping_cart',
     'apps.billing',
-    'apps.chatbot',
 ]
 
 MIDDLEWARE = [
@@ -173,7 +172,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DATASET_ROOT = os.path.join(BASE_DIR, 'dataset')
 
-MODELS_ROOT = os.path.join(BASE_DIR, 'models')
+MODELS_ROOT = os.path.join(BASE_DIR, 'model')
 
 # ia Settings
 IMG_WIDTH = 224
