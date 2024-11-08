@@ -2,7 +2,8 @@
 <div class="container py-24 mx-auto">
     <div class="flex justify-between mb-8">
         <h2 class="text-3xl font-bold mb-8 slide-in-bottom-h1 text-primary">Categorías</h2>
-        <button class="text-primary">Ver todas</button>
+        <a href="{% url 'products:products_list' %}" class="text-primary">Ver todas</a>
+
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
