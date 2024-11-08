@@ -35,6 +35,8 @@ class CartDetailView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cart_items = context['cart_items']
+        context['subtotal'] = (item.get_subtotal() for item in cart_items)
+        context['tax'] = 0.15
         context['total'] = sum(item.get_subtotal() for item in cart_items)
         return context
 
