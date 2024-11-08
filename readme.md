@@ -24,18 +24,13 @@ git clone https://github.com/aterana3/Kamazon-Proyecto-6to-semestre.git
 pip install -r dependencias.txt
 ```
 3. Crear database en postgres
-4. Configurar el archivo settings.py
+4. Crear el archivo .env con lo siguiente
 ```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '{nombre de la base de datos}',
-        'USER': '{usuario}',
-        'PASSWORD': '{contraseña}',
-        'HOST': '{host}',
-        'PORT': '{puerto}',
-    }
-}
+POSTGRES_HOST=[host]
+POSTGRES_PORT=[port]
+POSTGRES_DB=[database name]
+POSTGRES_USER=[user]
+POSTGRES_PASSWORD=[password]
 ```
 5. Crear migraciones
 ```bash
