@@ -40,3 +40,8 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver 0.0.0.0:8000
 ```
+6. Librerias para la IA
+pip install numpy
+pip install nltk
+pip install tensorflow
+pip install keras
