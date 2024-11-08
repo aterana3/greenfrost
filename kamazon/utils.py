@@ -1,10 +1,8 @@
 import re
+from django.db.models import Q
 from apps.products.models import Product
 import json
-from django.db.models import Q
 
-import re
-from django.db.models import Q
 
 def filter_products_keywords(consult):
     cleaned_consult = re.sub(r'[^\w\s]', '', consult.lower())
@@ -27,6 +25,6 @@ def generate_json_response(products):
         "price": float(product.price),
         "description": product.description,
         "stock": product.stock,
-        "href": '/products/' + str(product.id),
+        "id": '/products/' + str(product.id),
         "categories": [cat.name for cat in product.categories.all()],
     } for product in products])
