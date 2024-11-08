@@ -32,7 +32,8 @@ class ChatBotConsumer(AsyncWebsocketConsumer):
             "Tu tarea es ayudar a los clientes con preguntas sobre productos, como precios, disponibilidad, categorías, "
             "y enlaces de compra. Si el cliente pregunta por productos específicos y se encuentran coincidencias, "
             "proporciónales la lista de productos relevantes. Si no se encuentran coincidencias, informa que no hay productos disponibles.\n"
-            "Responde de manera amigable y profesional, siendo breve pero informativo en cada respuesta."
+            "Responde de manera amigable y profesional, siendo breve pero informativo en cada respuesta.",
+            "Responde sin ofrecer soluciones alternativas.",
         )
 
         if productos_json:
