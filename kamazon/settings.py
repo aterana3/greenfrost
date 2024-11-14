@@ -171,11 +171,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# ia Files(Models, Dataset)
-
-DATASET_ROOT = os.path.join(BASE_DIR, 'dataset')
-
+# IA Settings
 MODELS_ROOT = os.path.join(BASE_DIR, 'model')
+MODEL_USAGE = 'Phi-3-mini-4k-instruct.Q4_0.gguf'
 
 # ia Settings
 IMG_WIDTH = 224

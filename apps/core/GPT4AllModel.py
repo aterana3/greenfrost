@@ -1,6 +1,8 @@
 from gpt4all import GPT4All
 import threading
 from django.conf import settings
+import os
+
 
 class GPT4AllModelSingleton:
     _instance = None
@@ -15,8 +17,11 @@ class GPT4AllModelSingleton:
         return cls._instance
 
     def _initialize_model(self):
+        if not os.path.exists(settings.MODELS_ROOT):
+            os.makedirs(settings.MODELS_ROOT)
+
         self.model = GPT4All(
-            model_name="Phi-3-mini-4k-instruct.Q4_0.gguf",
+            model_name=settings.MODEL_USAGE,
             model_path=settings.MODELS_ROOT,
         )
 
