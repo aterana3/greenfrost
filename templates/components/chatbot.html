@@ -66,7 +66,7 @@
             messageElement.innerHTML = "Bot: " + message;
         }
 
-        const productLinkRegex = /\/products\/(\d+)/g;
+        const productLinkRegex = /\[\/products\/(\d+)\]/g;
         if (productLinkRegex.test(message)) {
             message = message.replace(productLinkRegex, function(match, productId) {
                 return `<a href="/products/${productId}" class="text-primary-light underline" target="_blank">Ver Producto</a>`;
