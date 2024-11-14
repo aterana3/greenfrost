@@ -37,7 +37,7 @@ class ChatBotConsumer(AsyncWebsocketConsumer):
         )
 
         if productos_json:
-            prompt_productos = f"Lista de productos:\n{json.dumps(productos_json)}"
+            prompt_productos = f"Lista de productos:\n{json.dumps(productos_json)}\nLas url colocalas tal cual esta en el formato"
         else:
             prompt_productos = "No se encontraron productos relevantes."
 

@@ -27,10 +27,10 @@ def filter_products_keywords(consult):
 
 def generate_json_response(products):
     return [{
-        "id": str(product.id),
         "name": product.name,
         "price": float(product.price),
         "description": product.description,
         "stock": product.stock,
+        "url": f"[/products/{product.id}]",
         "categories": [cat.name for cat in product.categories.all()],
     } for product in products]
