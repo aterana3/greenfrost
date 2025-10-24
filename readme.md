@@ -17,7 +17,7 @@ GreenFrost es un proyecto de programación diseñado para el aprendizaje univers
 **Instalacion:**
 1. Clonar el repositorio
 ```bash
-git clone https://github.com/aterana3/Kamazon-Proyecto-6to-semestre.git
+git clone https://github.com/aterana3/greenfrost.git
 ```
 2. Instalar las dependencias
 ```bash
